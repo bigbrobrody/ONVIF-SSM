@@ -28,14 +28,14 @@ The steps involved are:
 1. Extract from {rtpmap} the payload format number (e.g., 35, 96, etc.) and store as {PayloadFormat}.
 
 Generate the following new SDP information:
-`v=0
-o=- 0 0 IN IP4 {SourceAddress}
-s=SSM SDP
-c=IN IP4 {MulticastAddress}
-a=source-filter: incl IN IP4 * {SourceAddress}
-m=video {MulticastPortNumber} RTP/AVP {PayloadFormat}
-{rtpmap}
-{fmtp}`
+`v=0`
+`o=- 0 0 IN IP4 {SourceAddress}`
+`s=SSM SDP`
+`c=IN IP4 {MulticastAddress}`
+`a=source-filter: incl IN IP4 * {SourceAddress}`
+`m=video {MulticastPortNumber} RTP/AVP {PayloadFormat}`
+`{rtpmap}`
+`{fmtp}`
 
 Using an SDP file containing this information has been successfully tested using both VLC and ffplay to RTP join video from ONVIF conformant cameras and video encoders from various manufaturers.
 
