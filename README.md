@@ -44,3 +44,8 @@ Generate the following new SDP information:
 Using an SDP file containing this information has been successfully tested using both VLC and ffplay to RTP join video from ONVIF conformant cameras and video encoders from various manufaturers over a source-specific multicast network.
 
 Note: The above SDP allows only the video channel to be joined. Any audio and data channels are ignored.
+
+Further testing in February 2024 showed that the stream could be joined using VLC with the {fmtp} line omitted.
+
+## Options for presentation of SDP information to clients
+This presents an interesting option for presenting SDP information encoded in a URL, but is identified as expired and archived: [SDP URL Scheme](https://datatracker.ietf.org/doc/html/draft-fujikawa-sdp-url-01.txt)
