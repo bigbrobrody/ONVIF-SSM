@@ -48,4 +48,4 @@ Note: The above SDP allows only the video channel to be joined. Any audio and da
 Further testing in February 2024 showed that the stream could be joined using VLC with the {fmtp} line omitted.
 
 ## Options for presentation of SDP information to clients
-This presents an interesting option for presenting SDP information encoded in a URL, but is identified as expired and archived: [SDP URL Scheme](https://datatracker.ietf.org/doc/html/draft-fujikawa-sdp-url-01.txt)
+The following is an interesting option for presenting SDP information encoded in a URL, but is identified as expired and archived: [SDP URL Scheme](https://datatracker.ietf.org/doc/html/draft-fujikawa-sdp-url-01.txt)
