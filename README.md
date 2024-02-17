@@ -34,7 +34,8 @@ The steps involved are:
 Generate the following new SDP information:
 >v=0  
 >o=- 0 0 IN IP4 {SourceAddress}  
->s=SSM SDP  
+>s=SSM SDP
+>t=0 0
 >c=IN IP4 {MulticastAddress}  
 >a=source-filter: incl IN IP4 * {SourceAddress}  
 >m=video {MulticastPortNumber} RTP/AVP {PayloadFormat}  
