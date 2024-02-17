@@ -56,4 +56,4 @@ For example, as contained in the response to ONVIF GetProfiles.
 
 It is possible to contruct the bare minimum SDP information (as defined in RFC 8866) and pass it as an input parameter for ffplay on the command line. The key is to use the data:application/sdp media type as registered with [IANA](https://www.iana.org/assignments/media-types/application/sdp).
 
-An example batch file can be found in this repository.
+An [example batch file](https://github.com/bigbrobrody/ONVIF-SSM/blob/main/ffplay_sdp_inline.bat) can be found in this repository.
