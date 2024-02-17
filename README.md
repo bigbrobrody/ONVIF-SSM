@@ -57,3 +57,6 @@ For example, as contained in the response to ONVIF GetProfiles.
 It is possible to contruct the bare minimum SDP information (as defined in RFC 8866) and pass it as an input parameter for ffplay on the command line. The key is to use the data:application/sdp media type as registered with [IANA](https://www.iana.org/assignments/media-types/application/sdp).
 
 An [example batch file](https://github.com/bigbrobrody/ONVIF-SSM/blob/main/ffplay_sdp_inline.bat) can be found in this repository.
+
+The following does not work and results in ffplay hanging unable to determine the stream details:  
+>ffplay -protocol_whitelist rtp,udp -v trace -f h264 -i rtp://%multicast_address%:%multicast_port%?sources=%ip_address%
