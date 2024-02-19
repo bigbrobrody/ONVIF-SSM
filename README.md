@@ -54,9 +54,11 @@ The following is an interesting option for presenting SDP information encoded in
 VLC, ffmpeg and gstreamer will accept SDP information over HTTP - i.e. an SDP file from a webserver.
 
 The following commands have been found to work and result in low latency in ffmpeg and gstreamer, with reasonable latency in VLC:  
->vlc.exe --network-caching=300 --sout-x264-preset=ultrafast --sout-x264-tune=zerolatency https://path_to_SDP_file  
->ffplay.exe -protocol_whitelist https,tls,rtp,tcp,udp -vf setpts=0 -i  https://path_to_SDP_file  
->gst-launch-1.0.exe souphttpsrc location=https://path_to_SDP_file ! sdpdemux timeout=0 ! application/x-rtp,media=video ! decodebin ! autovideosink  
+>vlc.exe --network-caching=300 --sout-x264-preset=ultrafast --sout-x264-tune=zerolatency https://path_to_SDP_file
+
+>ffplay.exe -protocol_whitelist https,tls,rtp,tcp,udp -vf setpts=0 -i  https://path_to_SDP_file
+
+>gst-launch-1.0.exe souphttpsrc location=https://path_to_SDP_file ! sdpdemux timeout=0 ! application/x-rtp,media=video ! decodebin ! autovideosink
 
 ## If the IP address, multicast address, multicast port, video format and payload type (number) are known
 For example, as contained in the response to ONVIF GetProfiles with the exception of the payload type.
