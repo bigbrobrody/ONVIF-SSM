@@ -16,7 +16,7 @@ set LF=^
 @REM Generate SDP information including CRLF (for minimum required SDP see RFC 8866)
 set SDP=
 set SDP=!SDP!v=0!LF!
-set SDP=!SDP!o=- %DATE%_%TIME% %DATE%_%TIME% IN IP4 !multicast_address!!LF!
+set SDP=!SDP!o=- %RANDOM% %RANDOM% IN IP4 !multicast_address!!LF!
 set SDP=!SDP!s=MinSDP!LF!
 set SDP=!SDP!t=0 0!LF!
 set SDP=!SDP!c=IN IP4 !multicast_address!!LF!
