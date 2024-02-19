@@ -51,8 +51,15 @@ Further testing in February 2024 showed that the stream could be joined using VL
 ## Options for presentation of SDP information to clients
 The following is an interesting option for presenting SDP information encoded in a URL, but is identified as expired and archived: [SDP URL Scheme](https://datatracker.ietf.org/doc/html/draft-fujikawa-sdp-url-01.txt)
 
-## If the IP address, multicast address, multicast port and video format are known
-For example, as contained in the response to ONVIF GetProfiles.
+VLC, ffmpeg and gstreamer will accept SDP information over HTTP - i.e. an SDP file from a webserver.
+
+The following commands have been found to work and result in low latency in ffmpeg and gstreamer, with reasonable latency in VLC:  
+>vlc.exe --network-caching=300 --sout-x264-preset=ultrafast --sout-x264-tune=zerolatency https://path_to_SDP_file  
+>ffplay.exe -protocol_whitelist https,tls,rtp,tcp,udp -vf setpts=0 -i  https://path_to_SDP_file  
+>gst-launch-1.0.exe souphttpsrc location=https://path_to_SDP_file ! sdpdemux timeout=0 ! application/x-rtp,media=video ! decodebin ! autovideosink  
+
+## If the IP address, multicast address, multicast port, video format and payload type (number) are known
+For example, as contained in the response to ONVIF GetProfiles with the exception of the payload type.
 
 It is possible to contruct the bare minimum SDP information (as defined in RFC 8866) and pass it as an input parameter for ffplay on the command line. The key is to use the data:application/sdp media type as registered with [IANA](https://www.iana.org/assignments/media-types/application/sdp).
 
