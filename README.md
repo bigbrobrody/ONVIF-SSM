@@ -97,5 +97,5 @@ The following does not work and results in ffplay hanging unable to determine th
 `ffplay -protocol_whitelist rtp,udp -v trace -f h264 -i rtp://%multicast_address%:%multicast_port%?sources=%ip_address%`
 
 I have created a [hacked version of ffmpeg](https://github.com/bigbrobrody/FFmpeg), which allows an H264 stream to be joined using RTP without an SDP file. The modifications are all in rtsp.c within the libavformat library.  
-Once compiled it can be run with the following to create a low-latency player:
+Once compiled it can be run with the following to create a low-latency player:  
 `ffplay -protocol_whitelist rtp,udp -fflags nobuffer -flags low_delay -framedrop -i rtp://{multicast_address}:{multicast_port}?sources={IP_address}
