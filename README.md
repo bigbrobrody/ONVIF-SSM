@@ -98,3 +98,8 @@ The following does not work and results in ffplay hanging unable to determine th
 
 I have created a [hacked version of ffmpeg](https://github.com/bigbrobrody/FFmpeg), which allows an H264 stream to be joined using RTP without an SDP file. The modifications are all in rtsp.c within the libavformat library. Once compiled it can be run with the following to create a low-latency player:  
 `ffplay -protocol_whitelist rtp,udp -fflags nobuffer -flags low_delay -framedrop -i rtp://{multicast_address}:{multicast_port}?sources={IP_address}`
+
+## GStreamer investigations
+SDP information for an RTSP live stream appears to be generated in subprojects/gst-plugins-base/gst-libs/gst/sdp/gstsdpmessage.c in the gst_sdp_media_as_text() function.
+
+It looks as though source-filter would be included if it were an attribute of the GstSDPMedia that is passed into the function. However, it's unclear how the source-filter for each media entry would be created.
