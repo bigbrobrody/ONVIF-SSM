@@ -102,4 +102,4 @@ I have created a [hacked version of ffmpeg](https://github.com/bigbrobrody/FFmpe
 ## GStreamer investigations
 See issue (enhancement) [#3290](https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3290) and the associated fix.
 
-In particular [commit](https://gitlab.freedesktop.org/bigbrobrody/gstreamer/-/commit/6f986a3c4ce972a4ea0ec5a19a328da48e825cbf).
+In particular this [commit](https://gitlab.freedesktop.org/bigbrobrody/gstreamer/-/commit/6f986a3c4ce972a4ea0ec5a19a328da48e825cbf).
