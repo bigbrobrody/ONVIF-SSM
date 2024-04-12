@@ -103,3 +103,12 @@ I have created a [hacked version of ffmpeg](https://github.com/bigbrobrody/FFmpe
 See issue (enhancement) [#3290](https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/3290) and the associated fix.
 
 In particular this [commit](https://gitlab.freedesktop.org/bigbrobrody/gstreamer/-/commit/6f986a3c4ce972a4ea0ec5a19a328da48e825cbf).
+
+## Live555 investigations
+It looks like Live555 relies on the programme setting SSM for the RTSP server, rather than doing it automatically based on IP address.
+ 
+Test programme showing SSM being set outside of the core library: [live555/testProgs/testGSMStreamer.cpp at 2c92a57ca04b83b2038ab2ab701d05a54be06a85 · rgaufman/live555 (github.com)](https://github.com/rgaufman/live555/blob/2c92a57ca04b83b2038ab2ab701d05a54be06a85/testProgs/testGSMStreamer.cpp)
+ 
+The core code where the SSM flag is checked: [live555/liveMedia/ServerMediaSession.cpp at 2c92a57ca04b83b2038ab2ab701d05a54be06a85 · rgaufman/live555 (github.com)](https://github.com/rgaufman/live555/blob/2c92a57ca04b83b2038ab2ab701d05a54be06a85/liveMedia/ServerMediaSession.cpp#L227). isSSM is passed in and reflected in fIsSSM.
+
+I know that cameras like those from Axis work properly when using an RTSP URL that includes an SSM parameter, but not with OVNIF. There's potential that they use the Live555 library and pass the SSM parameter via the API.
