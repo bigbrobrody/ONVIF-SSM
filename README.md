@@ -111,4 +111,4 @@ Test programme showing SSM being set outside of the core library: [live555/testP
  
 The core code where the SSM flag is checked: [live555/liveMedia/ServerMediaSession.cpp at 2c92a57ca04b83b2038ab2ab701d05a54be06a85 · rgaufman/live555 (github.com)](https://github.com/rgaufman/live555/blob/2c92a57ca04b83b2038ab2ab701d05a54be06a85/liveMedia/ServerMediaSession.cpp#L227). isSSM is passed in and reflected in fIsSSM.
 
-I know that cameras like those from Axis work properly when using an RTSP URL that includes an SSM parameter, but not with OVNIF. There's potential that they use the Live555 library and pass the SSM parameter via the API.
+I know that cameras like those from Axis work properly when using an RTSP URL that includes an SSM parameter, but not with ONVIF. There's potential that they use the Live555 library and pass the SSM parameter via the API.
