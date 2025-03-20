@@ -104,7 +104,7 @@ See issue (enhancement) [#3290](https://gitlab.freedesktop.org/gstreamer/gstream
 
 In particular this [commit](https://gitlab.freedesktop.org/bigbrobrody/gstreamer/-/commit/6f986a3c4ce972a4ea0ec5a19a328da48e825cbf).
 
-This is interesting [#3485](https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/3485).
+This is interesting [#3485](https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/3485), but might still fall foul of not being able to process in-band SPS/PPS.
 
 ## Live555 investigations
 It looks like Live555 relies on the programme setting SSM for the RTSP server, rather than doing it automatically based on IP address.
