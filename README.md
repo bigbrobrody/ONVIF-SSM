@@ -118,6 +118,7 @@ I know that cameras like those from Axis work properly when using an RTSP URL th
 ## Low latency viewing of RTSP/RTP streams
 As above, the following commands have been found to work and result in low latency in ffmpeg and gstreamer, with reasonable latency in VLC:
 
+### VLC
 `vlc.exe --network-caching=300 --sout-x264-preset=ultrafast --sout-x264-tune=zerolatency [input]`
 
 Options untested by me:
@@ -128,12 +129,15 @@ Options untested by me:
 --clock-jitter=200
 --rate 1.1`
 
+###ffmpeg
 `ffplay.exe -protocol_whitelist rtsp,rtp,tcp,udp,file -vf setpts=0 -i [input]`
 
 TODO Check options that I recommended to others.
 
+### gstreamer
 `gst-launch-1.0.exe souphttpsrc location=[input] ! sdpdemux timeout=0 ! application/x-rtp,media=video ! decodebin ! autovideosink`
 
+### References
 References for material on low-latency:
 
 [ffmpeg streaming guide](https://trac.ffmpeg.org/wiki/StreamingGuide#Latency)
@@ -142,4 +146,4 @@ References for material on low-latency:
 
 [Reddit post on low-latency VLC](https://www.reddit.com/r/VLC/comments/1afjmgi/rtsp_stream_slowly_creeps_behind/)
 
-[Alternative player base on mplayer/mplayer 2](https://mpv.io/) - I've not tested for SSM support
+[mpv](https://mpv.io/) - Alternative player base on mplayer/mplayer 2, I've not tested for SSM support
