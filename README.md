@@ -114,3 +114,25 @@ Test programme showing SSM being set outside of the core library: [live555/testP
 The core code where the SSM flag is checked: [live555/liveMedia/ServerMediaSession.cpp at 2c92a57ca04b83b2038ab2ab701d05a54be06a85 · rgaufman/live555 (github.com)](https://github.com/rgaufman/live555/blob/2c92a57ca04b83b2038ab2ab701d05a54be06a85/liveMedia/ServerMediaSession.cpp#L227). isSSM is passed in and reflected in fIsSSM.
 
 I know that cameras like those from Axis work properly when using an RTSP URL that includes an SSM parameter, but not with ONVIF. There's potential that they use the Live555 library and pass the SSM parameter via the API.
+
+## Low latency viewing of RTSP/RTP streams
+As above, the following commands have been found to work and result in low latency in ffmpeg and gstreamer, with reasonable latency in VLC:
+
+`vlc.exe --network-caching=300 --sout-x264-preset=ultrafast --sout-x264-tune=zerolatency [input]`
+Options untested by me:
+--low-delay
+--network-caching=100
+--no-audio
+--clock-jitter=200
+--rate 1.1
+
+`ffplay.exe -protocol_whitelist rtsp,rtp,tcp,udp,file -vf setpts=0 -i [input]`
+TODO Check options that I recommended to others.
+
+`gst-launch-1.0.exe souphttpsrc location=[input] ! sdpdemux timeout=0 ! application/x-rtp,media=video ! decodebin ! autovideosink`
+
+References for material on low-latency:
+[ffmpeg streaming guide](https://trac.ffmpeg.org/wiki/StreamingGuide#Latency)
+[VLC forum post on low-latency](https://forum.videolan.org/viewtopic.php?t=149511)
+[Reddit post on low-latency VLC](https://www.reddit.com/r/VLC/comments/1afjmgi/rtsp_stream_slowly_creeps_behind/)
+[Alternative player base on mplayer/mplayer 2](https://mpv.io/) - I've not tested for SSM support
