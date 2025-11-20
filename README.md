@@ -129,7 +129,7 @@ Options untested by me:
 --clock-jitter=200
 --rate 1.1`
 
-###ffmpeg
+### ffmpeg
 `ffplay.exe -protocol_whitelist rtsp,rtp,tcp,udp,file -vf setpts=0 -i [input]`
 
 TODO Check options that I recommended to others.
